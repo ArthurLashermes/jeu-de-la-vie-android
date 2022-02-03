@@ -9,8 +9,8 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/../../../../etud/arlasherme/mobile/Jeudelavie" />
-            <option value="$PROJECT_DIR$/../../../../etud/arlasherme/mobile/Jeudelavie/app" />
+            <option value="$PROJECT_DIR$/../../../../../etud/arlasherme/mobile/jeu-de-la-vie-android/Jeudelavie-CODE" />
+            <option value="$PROJECT_DIR$/../../../../../etud/arlasherme/mobile/jeu-de-la-vie-android/Jeudelavie-CODE/app" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

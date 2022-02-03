@@ -1,9 +1,11 @@
-package com.iut.jeudelavie;
+package com.iut.jeudelavie.Views;
 
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.iut.jeudelavie.R;
 
 public class Info extends AppCompatActivity {
     @Override
