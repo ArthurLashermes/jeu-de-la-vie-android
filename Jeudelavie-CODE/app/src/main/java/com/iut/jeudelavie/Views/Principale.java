@@ -13,7 +13,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.utils.widget.ImageFilterButton;
 
-import com.iut.jeudelavie.Modele.Cell;
 import com.iut.jeudelavie.R;
 
 public class Principale extends AppCompatActivity {

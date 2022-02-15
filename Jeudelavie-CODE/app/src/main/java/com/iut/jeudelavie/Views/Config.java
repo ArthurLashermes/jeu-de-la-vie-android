@@ -13,4 +13,5 @@ public class Config extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.config);
     }
+
 }
