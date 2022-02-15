@@ -47,7 +47,7 @@ public class Dieu {
     public void evolution(){
         for(int x=0; x<monde.getTailleX();x++){
             for(int y=0;y<monde.getTailleY();y++){
-                Cellule current = monde.getGrille()[x][y];
+                Cellule current = monde.getGrille()[x][y].getCellule();
                 if (!traite.contains(current)) {
                     evolveCell(current);
                     traite.add(current);

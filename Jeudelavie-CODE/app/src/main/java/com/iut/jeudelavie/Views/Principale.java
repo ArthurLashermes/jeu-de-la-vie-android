@@ -3,16 +3,17 @@ package com.iut.jeudelavie.Views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.FrameLayout;
 import android.widget.GridLayout;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.utils.widget.ImageFilterButton;
 
+import com.iut.jeudelavie.Modele.BoucleDeJeu;
+import com.iut.jeudelavie.Modele.Dieu;
+import com.iut.jeudelavie.Modele.Monde;
+import com.iut.jeudelavie.Modele.Rules;
 import com.iut.jeudelavie.R;
 
 public class Principale extends AppCompatActivity {
@@ -20,6 +21,17 @@ public class Principale extends AppCompatActivity {
     private Button boutonConfig;
     private ImageFilterButton info;
     private GridLayout table;
+
+
+    private BoucleDeJeu boucleDeJeu;
+    private Dieu dieu;
+    private Monde monde;
+    private Rules rules;
+
+
+    public Principale() {
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +40,12 @@ public class Principale extends AppCompatActivity {
         boutonConfig=findViewById(R.id.config);
         info=findViewById(R.id.info);
         table=findViewById(R.id.Table);
+
+//        monde = new Monde(10,10);
+//        boucleDeJeu =new BoucleDeJeu(monde, /*j'ai pas capté l'utilisation des règles*/);
+//        dieu = new Dieu(boucleDeJeu);
+
+
         info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,19 +65,6 @@ public class Principale extends AppCompatActivity {
                 clicSurBoutonConfig();
             }
         });
-
-
-        //layout param à modif
-        for (int j = 0; j< 10; j++) {
-            for (int i = 0; i < 10; i++) {
-                View view=getLayoutInflater().inflate(R.layout.cell, table, false);
-                GridLayout.LayoutParams params =(GridLayout.LayoutParams) view.getLayoutParams();
-                params.rowSpec = GridLayout.spec(i);
-                params.columnSpec = GridLayout.spec(j);
-                view.setLayoutParams(params);
-                table.addView(view);
-            }
-        }
     }
 
     public void clicSurBoutonConfig(){
@@ -83,6 +88,6 @@ public class Principale extends AppCompatActivity {
     }
 
     public void start(){
-
+        boucleDeJeu.run();
     }
 }

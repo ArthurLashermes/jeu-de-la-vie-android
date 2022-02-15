@@ -1,6 +1,8 @@
 package com.iut.jeudelavie.Modele;
 
 
+import com.iut.jeudelavie.Views.CelluleView;
+
 public class Monde{
 
     /**
@@ -33,7 +35,7 @@ public class Monde{
     /**
      * Grille de cellule.
      */
-    private Cellule[][] grille;
+    private CelluleView[][] grille;
 
 
     /**
@@ -51,7 +53,7 @@ public class Monde{
      * Getter
      * @return
      */
-    public Cellule[][] getGrille() {
+    public CelluleView[][] getGrille() {
         return grille;
     }
 

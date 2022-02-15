@@ -1,6 +1,10 @@
 package com.iut.jeudelavie.Modele;
 
-public class Cellule {
+import androidx.fragment.app.Fragment;
+
+import com.iut.jeudelavie.R;
+
+public class Cellule{
     /**
      * Etat de la cellule au prochain tour de boucle. -1 signifie que la cellule va mourir, 1 signifie qu'elle va naitre, 0 ne change rien
      */
@@ -32,6 +36,7 @@ public class Cellule {
         this.alive=false;
         this.x = x;
         this.y = y;
+
     }
 
     /**
