@@ -1,6 +1,6 @@
 package com.iut.jeudelavie.Modele;
 
-import com.iut.jeudelavie.Views.CelluleView;
+//import com.iut.jeudelavie.Views.CelluleView;
 
 /**
  * Gère la création de tableau de cellules.
@@ -13,11 +13,11 @@ public class GrilleCellFactory {
      * @param sizeY Taille y du tableau
      * @return Tableau de cellule
      */
-    public static CelluleView[][] createCellGrid(int sizeX,int sizeY){
-        CelluleView[][] grille = new CelluleView[sizeX][sizeY];
+    public static Cellule[][] createCellGrid(int sizeX,int sizeY){
+        Cellule[][] grille = new Cellule[sizeX][sizeY];
         for(int x=0;x<sizeX;x++){
             for(int y=0;y<sizeY;y++){
-                grille[x][y] = new CelluleView(x,y);
+                grille[x][y] = new Cellule(false,x,y);
             }
         }
 

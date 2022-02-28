@@ -16,8 +16,10 @@ public class Test {
 
     /**
      * Fonction servant pour tester le model dans le terminal
+     * A lancer en with coverage sinon marche
      * @deprecated Le code n'est pas à jour et utilise d'anciennes fonctions qui n'existe plus.
      */
+
     public static void main (String[] args) {
         Monde monde = new Monde(10,10);
         boolean born[] = new boolean[10];
@@ -32,11 +34,11 @@ public class Test {
         Dieu dieu = new Dieu(monde, rules);
 
         //glider
-        dieu.getMonde().getGrille()[1][0].getCellule().setAlive(true);
-        dieu.getMonde().getGrille()[2][1].getCellule().setAlive(true);
-        dieu.getMonde().getGrille()[0][2].getCellule().setAlive(true);
-        dieu.getMonde().getGrille()[1][2].getCellule().setAlive(true);
-        dieu.getMonde().getGrille()[2][2].getCellule().setAlive(true);
+        dieu.getMonde().getGrille()[1][0].setAlive(true);
+        dieu.getMonde().getGrille()[2][1].setAlive(true);
+        dieu.getMonde().getGrille()[0][2].setAlive(true);
+        dieu.getMonde().getGrille()[1][2].setAlive(true);
+        dieu.getMonde().getGrille()[2][2].setAlive(true);
 
 
         //oscillateur basique 3 cellules
@@ -45,7 +47,8 @@ public class Test {
         dieu.faireNaitre(2,1);*/
 
         //static figure
-        /*dieu.faireNaitre(1,0);
+        /*
+        dieu.faireNaitre(1,0);
         dieu.faireNaitre(2,1);
         dieu.faireNaitre(2,2);
         dieu.faireNaitre(1,3);
@@ -53,6 +56,7 @@ public class Test {
         dieu.faireNaitre(0,1);
         dieu.faireNaitre(1,2);
         */
+
         Afficheur.afficherCelluleColl(dieu.getTraite());
         Afficheur.afficherGrille(dieu.getMonde());
         System.out.println("\n");
@@ -74,4 +78,5 @@ public class Test {
 
 
     }
+
 }

@@ -11,6 +11,7 @@ public interface ISaver {
      * @param monde Monde dont on souhaite sauvegarder la grille de cellule
      * @param fichier Fichier dans lequel on souhaite sauvegarder la grille
      */
+    /*
     static void save(Monde monde, File fichier) {
         int sizex = monde.getTailleX();
         int sizey = monde.getTailleY();
@@ -31,5 +32,5 @@ public interface ISaver {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 }

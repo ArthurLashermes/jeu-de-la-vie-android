@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.GridLayout;
 
 import androidx.annotation.Nullable;
@@ -15,6 +16,8 @@ import com.iut.jeudelavie.Modele.Dieu;
 import com.iut.jeudelavie.Modele.Monde;
 import com.iut.jeudelavie.Modele.Rules;
 import com.iut.jeudelavie.R;
+
+import java.util.Arrays;
 
 public class Principale extends AppCompatActivity {
     private Button boutonLancement;
@@ -44,6 +47,34 @@ public class Principale extends AppCompatActivity {
 //        monde = new Monde(10,10);
 //        boucleDeJeu =new BoucleDeJeu(monde, /*j'ai pas capté l'utilisation des règles*/);
 //        dieu = new Dieu(boucleDeJeu);
+
+        //layout param à modif
+        Monde monde = new Monde(10,10);
+        boolean born[] = new boolean[10];
+        boolean survive[] = new boolean[10];
+        Arrays.fill(born, false);
+        Arrays.fill(survive, false);
+        born[3]=true;
+        survive[2]=true;
+        survive[3]=true;
+
+        Rules rules = new Rules(born,survive);
+        dieu = new Dieu(monde, rules);
+
+
+        //glider
+        dieu.getMonde().getGrille()[1][0].setAlive(true);
+        dieu.getMonde().getGrille()[2][1].setAlive(true);
+        dieu.getMonde().getGrille()[0][2].setAlive(true);
+        dieu.getMonde().getGrille()[1][2].setAlive(true);
+        dieu.getMonde().getGrille()[2][2].setAlive(true);
+
+
+
+
+        actualiser();
+
+
 
 
         info.setOnClickListener(new View.OnClickListener() {
@@ -90,6 +121,26 @@ public class Principale extends AppCompatActivity {
     public void start(){
 //        BoucleDeJeu boucleDeJeu = new BoucleDeJeu();
 
-        boucleDeJeu.run();
+        //boucleDeJeu.run();
+        dieu.evolution();
+        dieu.updateCells();
+        actualiser();
+    }
+
+    public void actualiser(){
+
+        table.removeAllViews();
+        for (int j = 0; j< 10; j++) {
+            for (int i = 0; i < 10; i++) {
+                View view=getLayoutInflater().inflate(R.layout.cell, table, false);
+                GridLayout.LayoutParams params =(GridLayout.LayoutParams) view.getLayoutParams();
+                params.rowSpec = GridLayout.spec(i);
+                params.columnSpec = GridLayout.spec(j);
+                view.setLayoutParams(params);
+                CheckBox box=(CheckBox)view;
+                box.setChecked(dieu.getMonde().getGrille()[i][j].getAlive());
+                table.addView(box);
+            }
+        }
     }
 }

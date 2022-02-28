@@ -22,7 +22,7 @@ public class Afficheur {
             System.out.println(ligne);
             ligne = "";
             for (int j = 0; j < monde.getTailleX(); j++) { //X pour les lignes
-                if(monde.getGrille()[j][i].getCellule().isAlive())
+                if(monde.getGrille()[j][i].isAlive())
                     ligne=ligne.concat("X");
                 else{
                     ligne=ligne.concat(".");

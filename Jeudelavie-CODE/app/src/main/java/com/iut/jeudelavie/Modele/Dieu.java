@@ -1,6 +1,6 @@
 package com.iut.jeudelavie.Modele;
 
-import com.iut.jeudelavie.Views.CelluleView;
+//import com.iut.jeudelavie.Views.CelluleView;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -38,7 +38,7 @@ public class Dieu {
     public static void clearGrid() {
         for(int x=0;x<monde.getTailleX();x++){
             for(int y=0;y<monde.getTailleY();y++){
-                monde.getGrille()[x][y].getCellule().setAlive(false);
+                monde.getGrille()[x][y].setAlive(false);
             }
         }
     }
@@ -49,7 +49,7 @@ public class Dieu {
     public void evolution(){
         for(int x=0; x<monde.getTailleX();x++){
             for(int y=0;y<monde.getTailleY();y++){
-                Cellule current = monde.getGrille()[x][y].getCellule();
+                Cellule current = monde.getGrille()[x][y];
                 if (!traite.contains(current)) {
                     evolveCell(current);
                     traite.add(current);
@@ -88,9 +88,11 @@ public class Dieu {
         for(int x=i-1;x<=i+1;x++){
             for(int y=j-1;y<=j+1;y++){
                 if(x >= 0 && x < monde.getTailleX() && y >= 0 && y < monde.getTailleY()) {
-                    CelluleView current = monde.getGrille()[x][y];
+                    //CelluleView current = monde.getGrille()[x][y];
+                    Cellule current = monde.getGrille()[x][y];
+
                     if(x!=i || y!=j){
-                        if (current.getCellule().isAlive()) {
+                        if (current.isAlive()) {
                             cpt = cpt + 1;
                         }
                     }
