@@ -24,7 +24,7 @@ public interface ISaver {
             writer.write(sizey+"\n");
             for(int x=0;x<sizex;x++){
                 for(int y=0;y<sizey;y++){
-                    writer.write((monde.getGrille()[x][y].isAlive() ? "1" : "0")+"\n");
+                    writer.write((monde.getGrille()[x][y].getCellule().isAlive() ? "1" : "0")+"\n");
                 }
             }
             writer.close();

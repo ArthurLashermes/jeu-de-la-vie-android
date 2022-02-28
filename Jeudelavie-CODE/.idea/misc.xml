@@ -14,7 +14,9 @@
         <entry key="../../../../../etud/jubloux/AndroidStudioProjects/jeu-de-la-vie-android/Jeudelavie-CODE/app/src/main/res/drawable/ic_launcher_background.xml" value="0.21354166666666666" />
         <entry key="../../../../../etud/jubloux/AndroidStudioProjects/jeu-de-la-vie-android/Jeudelavie-CODE/app/src/main/res/layout/cell.xml" value="0.25" />
         <entry key="../../../../../etud/jubloux/AndroidStudioProjects/jeu-de-la-vie-android/Jeudelavie-CODE/app/src/main/res/layout/cell2.xml" value="0.19739583333333333" />
-        <entry key="../../../../../etud/jubloux/AndroidStudioProjects/jeu-de-la-vie-android/Jeudelavie-CODE/app/src/main/res/layout/config.xml" value="0.39479166666666665" />
+        <entry key="../../../../../etud/jubloux/AndroidStudioProjects/jeu-de-la-vie-android/Jeudelavie-CODE/app/src/main/res/layout/cellule.xml" value="0.2" />
+        <entry key="../../../../../etud/jubloux/AndroidStudioProjects/jeu-de-la-vie-android/Jeudelavie-CODE/app/src/main/res/layout/config.xml" value="0.33" />
+        <entry key="../../../../../etud/jubloux/AndroidStudioProjects/jeu-de-la-vie-android/Jeudelavie-CODE/app/src/main/res/layout/fragment_born.xml" value="0.19739583333333333" />
         <entry key="../../../../../etud/jubloux/AndroidStudioProjects/jeu-de-la-vie-android/Jeudelavie-CODE/app/src/main/res/layout/fragment_cellule.xml" value="0.19739583333333333" />
         <entry key="../../../../../etud/jubloux/AndroidStudioProjects/jeu-de-la-vie-android/Jeudelavie-CODE/app/src/main/res/layout/info.xml" value="0.19739583333333333" />
         <entry key="../../../../../etud/jubloux/AndroidStudioProjects/jeu-de-la-vie-android/Jeudelavie-CODE/app/src/main/res/layout/item_list.xml" value="0.19739583333333333" />
@@ -31,5 +33,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.39479166666666665" />
+      </ProjectState>
+    </option>
   </component>
 </project>

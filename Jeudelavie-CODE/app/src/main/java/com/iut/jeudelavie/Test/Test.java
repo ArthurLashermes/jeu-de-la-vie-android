@@ -32,11 +32,11 @@ public class Test {
         Dieu dieu = new Dieu(monde, rules);
 
         //glider
-        dieu.getMonde().getGrille()[1][0].setAlive(true);
-        dieu.getMonde().getGrille()[2][1].setAlive(true);
-        dieu.getMonde().getGrille()[0][2].setAlive(true);
-        dieu.getMonde().getGrille()[1][2].setAlive(true);
-        dieu.getMonde().getGrille()[2][2].setAlive(true);
+        dieu.getMonde().getGrille()[1][0].getCellule().setAlive(true);
+        dieu.getMonde().getGrille()[2][1].getCellule().setAlive(true);
+        dieu.getMonde().getGrille()[0][2].getCellule().setAlive(true);
+        dieu.getMonde().getGrille()[1][2].getCellule().setAlive(true);
+        dieu.getMonde().getGrille()[2][2].getCellule().setAlive(true);
 
 
         //oscillateur basique 3 cellules

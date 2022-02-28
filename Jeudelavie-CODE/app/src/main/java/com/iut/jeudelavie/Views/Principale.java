@@ -88,6 +88,8 @@ public class Principale extends AppCompatActivity {
     }
 
     public void start(){
+//        BoucleDeJeu boucleDeJeu = new BoucleDeJeu();
+
         boucleDeJeu.run();
     }
 }

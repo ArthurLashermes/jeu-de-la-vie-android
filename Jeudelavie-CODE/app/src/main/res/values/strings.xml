@@ -3,4 +3,8 @@
     <string name="play">play</string>
     <string name="pause">pause</string>
     <string name="config">configuration partie</string>
+    <string name="survive">Survivre</string>
+    <string name="born">Naître</string>
+
+
 </resources>

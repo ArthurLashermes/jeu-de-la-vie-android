@@ -61,7 +61,7 @@ public class Monde{
      * Setter
      * @param grille
      */
-    public void setGrille(Cellule[][] grille) {
+    public void setGrille(CelluleView[][] grille) {
         this.grille = grille;
     }
 }

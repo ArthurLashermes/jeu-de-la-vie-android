@@ -6,7 +6,7 @@ public class BoucleDeJeu implements Runnable{
     /**
      * Instance du dieu
      */
-    private final Dieu dieu;
+    private final Dieu dieu ;
 
     /**
      * Indique à la pause si elle est lancé ou non
