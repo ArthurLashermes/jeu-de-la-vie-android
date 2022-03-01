@@ -5,6 +5,7 @@
     <string name="config">configuration partie</string>
     <string name="survive">Survivre</string>
     <string name="born">Naître</string>
+    <string name="avancer">Click pour aller vers la prochaine étape ---></string>
 
 
 </resources>

@@ -2,9 +2,11 @@ package com.iut.jeudelavie.Views;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.GridLayout;
 
 import androidx.annotation.Nullable;
@@ -16,14 +18,22 @@ import com.iut.jeudelavie.Modele.Dieu;
 import com.iut.jeudelavie.Modele.Monde;
 import com.iut.jeudelavie.Modele.Rules;
 import com.iut.jeudelavie.R;
+import com.iut.jeudelavie.Stub.Stub;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+
+import java.lang.Math;
 
 public class Principale extends AppCompatActivity {
     private Button boutonLancement;
     private Button boutonConfig;
+    private Button avancer;
     private ImageFilterButton info;
     private GridLayout table;
+
+    private CheckBox Tab[][]= new CheckBox[10][10];
 
 
     private BoucleDeJeu boucleDeJeu;
@@ -31,6 +41,12 @@ public class Principale extends AppCompatActivity {
     private Monde monde;
     private Rules rules;
 
+
+    public Pair<Integer, Integer> mapPosition(int position) {
+        int x=position/10;
+        int y=position%10;
+        return new Pair(x, y);
+    }
 
     public Principale() {
     }
@@ -43,39 +59,51 @@ public class Principale extends AppCompatActivity {
         boutonConfig=findViewById(R.id.config);
         info=findViewById(R.id.info);
         table=findViewById(R.id.Table);
+        avancer=findViewById(R.id.Avancer);
+
 
 //        monde = new Monde(10,10);
 //        boucleDeJeu =new BoucleDeJeu(monde, /*j'ai pas capté l'utilisation des règles*/);
 //        dieu = new Dieu(boucleDeJeu);
 
-        //layout param à modif
-        Monde monde = new Monde(10,10);
-        boolean born[] = new boolean[10];
-        boolean survive[] = new boolean[10];
-        Arrays.fill(born, false);
-        Arrays.fill(survive, false);
-        born[3]=true;
-        survive[2]=true;
-        survive[3]=true;
 
-        Rules rules = new Rules(born,survive);
-        dieu = new Dieu(monde, rules);
-
-
-        //glider
-        dieu.getMonde().getGrille()[1][0].setAlive(true);
-        dieu.getMonde().getGrille()[2][1].setAlive(true);
-        dieu.getMonde().getGrille()[0][2].setAlive(true);
-        dieu.getMonde().getGrille()[1][2].setAlive(true);
-        dieu.getMonde().getGrille()[2][2].setAlive(true);
+        dieu= Stub.Loader();
+        for (int j = 0; j< 10; j++) {
+            for (int i = 0; i < 10; i++) {
+                View view=getLayoutInflater().inflate(R.layout.cell, table, false);
+                GridLayout.LayoutParams params =(GridLayout.LayoutParams)view.getLayoutParams();
+                params.rowSpec = GridLayout.spec(i);
+                params.columnSpec = GridLayout.spec(j);
+                view.setLayoutParams(params);
+                CheckBox box=(CheckBox)view;
+                box.setChecked(dieu.getMonde().getGrille()[i][j].getAlive());
 
 
+                int finalI1 = i;
+                int finalJ = j;
+                box.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                        if(b){
+                            dieu.getMonde().getGrille()[finalI1][finalJ].setAlive(true);
+                        }
+                    }
+                });
+                Tab[j][i]=box;
+
+                table.addView(box);
+            }
+        }
 
 
-        actualiser();
 
 
-
+        avancer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                start();
+            }
+        });
 
         info.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,7 +142,6 @@ public class Principale extends AppCompatActivity {
             boutonLancement.setText("Play");
         }else{
             boutonLancement.setText("Pause");
-            start();
         }
     }
 
@@ -128,16 +155,17 @@ public class Principale extends AppCompatActivity {
     }
 
     public void actualiser(){
-
+        View view;
+        CheckBox box;
         table.removeAllViews();
         for (int j = 0; j< 10; j++) {
             for (int i = 0; i < 10; i++) {
-                View view=getLayoutInflater().inflate(R.layout.cell, table, false);
+                view = Tab[j][i];
                 GridLayout.LayoutParams params =(GridLayout.LayoutParams) view.getLayoutParams();
                 params.rowSpec = GridLayout.spec(i);
                 params.columnSpec = GridLayout.spec(j);
                 view.setLayoutParams(params);
-                CheckBox box=(CheckBox)view;
+                box=(CheckBox)view;
                 box.setChecked(dieu.getMonde().getGrille()[i][j].getAlive());
                 table.addView(box);
             }
