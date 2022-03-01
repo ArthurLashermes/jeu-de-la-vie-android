@@ -1,8 +1,11 @@
 package com.iut.jeudelavie.Modele;
 
 
+import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
-public class BoucleDeJeu implements Runnable{
+public class BoucleDeJeu extends Observable implements Runnable{
     /**
      * Instance du dieu
      */
@@ -29,6 +32,8 @@ public class BoucleDeJeu implements Runnable{
     public static void setTime(int time) {
         BoucleDeJeu.time = time;
     }
+
+    public static ArrayList<Observer> listObserver = new ArrayList<>();
     /**
      * Constructeur de la boucle de jeu
      * @param dieu Le dieu qui sera modifié par la boucle de jeu.
@@ -43,10 +48,9 @@ public class BoucleDeJeu implements Runnable{
      */
     @Override
     public void run() {
-        while(true){
+        while(played){
             if(BoucleDeJeu.getPlayed()){
-                dieu.evolution();
-                dieu.updateCells();
+                notifyObservers();
             }
             try { //ne pas mettre dans la boucle, sinon ça ne tourne pas
                 Thread.sleep(getTime());
@@ -55,4 +59,12 @@ public class BoucleDeJeu implements Runnable{
             }
         }
     }
+
+    @Override
+    public void notifyObservers(){
+        for (Observer o : listObserver){
+            o.update(this,);
+        }
+    }
+
 }

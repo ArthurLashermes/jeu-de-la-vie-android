@@ -37,6 +37,9 @@ public class Principale extends AppCompatActivity {
 
 
     private Dieu dieu;
+    private BoucleDeJeu boucleDeJeu;
+    private Thread thread;
+
 
 
     /**
@@ -91,6 +94,8 @@ public class Principale extends AppCompatActivity {
                 table.addView(box);
             }
         }
+        boucleDeJeu = new BoucleDeJeu(dieu);
+        thread = new Thread(boucleDeJeu);
 
 
 
@@ -137,18 +142,17 @@ public class Principale extends AppCompatActivity {
     public void clicSurBoutonPlay(){
         if(boutonLancement.getText() == "Pause"){
             boutonLancement.setText("Play");
+            BoucleDeJeu.setPlayed(false);
         }else{
             boutonLancement.setText("Pause");
+            start();
+
         }
+
     }
 
     public void start(){
-//        BoucleDeJeu boucleDeJeu = new BoucleDeJeu();
-
-        //boucleDeJeu.run();
-        dieu.evolution();
-        dieu.updateCells();
-        actualiser();
+        thread.start();
     }
 
     public void actualiser(){
