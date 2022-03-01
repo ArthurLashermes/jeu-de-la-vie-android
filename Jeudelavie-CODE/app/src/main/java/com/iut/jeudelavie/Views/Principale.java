@@ -36,12 +36,16 @@ public class Principale extends AppCompatActivity {
     private CheckBox Tab[][]= new CheckBox[10][10];
 
 
-    private BoucleDeJeu boucleDeJeu;
     private Dieu dieu;
-    private Monde monde;
-    private Rules rules;
 
 
+    /**
+     * Cette fonction servira pour permmettre de faire la transposition d'une array list vers un
+     * tableau double.
+     *
+     * @param position
+     * @return
+     */
     public Pair<Integer, Integer> mapPosition(int position) {
         int x=position/10;
         int y=position%10;
@@ -62,11 +66,6 @@ public class Principale extends AppCompatActivity {
         avancer=findViewById(R.id.Avancer);
 
 
-//        monde = new Monde(10,10);
-//        boucleDeJeu =new BoucleDeJeu(monde, /*j'ai pas capté l'utilisation des règles*/);
-//        dieu = new Dieu(boucleDeJeu);
-
-
         dieu= Stub.Loader();
         for (int j = 0; j< 10; j++) {
             for (int i = 0; i < 10; i++) {
@@ -77,8 +76,6 @@ public class Principale extends AppCompatActivity {
                 view.setLayoutParams(params);
                 CheckBox box=(CheckBox)view;
                 box.setChecked(dieu.getMonde().getGrille()[i][j].getAlive());
-
-
                 int finalI1 = i;
                 int finalJ = j;
                 box.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
