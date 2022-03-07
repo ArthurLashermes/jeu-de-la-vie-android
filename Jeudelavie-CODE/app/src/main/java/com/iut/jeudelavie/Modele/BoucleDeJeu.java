@@ -1,22 +1,19 @@
 package com.iut.jeudelavie.Modele;
+import android.util.Log;
 
+import com.iut.jeudelavie.Modele.Interface.Observer;
 
 import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
 
-public class BoucleDeJeu extends Observable implements Runnable{
-    /**
-     * Instance du dieu
-     */
-    private final Dieu dieu ;
+
+public class BoucleDeJeu implements Runnable{
 
     /**
      * Indique à la pause si elle est lancé ou non
      */
-    public static boolean played = false;
-    public static boolean getPlayed(){ return played; }
-    public static void setPlayed(boolean valeur){ played = valeur;}
+    public static int played = 2; //0 pour en pause, 1 pour en cours, 2 pour jamais lancé/réinitialisé
+    public static int getPlayed(){ return played; }
+    public static void setPlayed(int valeur){ played = valeur;}
 
 
 
@@ -36,11 +33,9 @@ public class BoucleDeJeu extends Observable implements Runnable{
     public static ArrayList<Observer> listObserver = new ArrayList<>();
     /**
      * Constructeur de la boucle de jeu
-     * @param dieu Le dieu qui sera modifié par la boucle de jeu.
      */
-    public BoucleDeJeu(Dieu dieu){
-        this.dieu = dieu;
-        setTime(500);
+    public BoucleDeJeu(){
+        setTime(1000);
     }
 
     /**
@@ -48,23 +43,36 @@ public class BoucleDeJeu extends Observable implements Runnable{
      */
     @Override
     public void run() {
-        while(played){
-            if(BoucleDeJeu.getPlayed()){
-                notifyObservers();
+        while(true){
+            while(played == 1){
+                try {
+                    notifyObservers();
+                    Log.d("General", "Running the thread" + getPlayed());
+                    Thread.sleep(getTime());
+                } catch(Exception e){
+                    e.printStackTrace();
+                }
             }
-            try { //ne pas mettre dans la boucle, sinon ça ne tourne pas
-                Thread.sleep(getTime());
-            } catch(Exception e){
-                e.printStackTrace();
+            while (played == 0){
+                try {
+                    Log.d("General", "Running the thread" + getPlayed());
+                    Thread.sleep(getTime());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
+        }
+
+    }
+
+    public void notifyObservers(){
+        for (Observer o : listObserver){
+            o.update();
         }
     }
 
-    @Override
-    public void notifyObservers(){
-        for (Observer o : listObserver){
-            o.update(this,);
-        }
+    public void addListener(Observer observer){
+        listObserver.add(observer);
     }
 
 }

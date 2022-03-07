@@ -15,6 +15,7 @@ import androidx.constraintlayout.utils.widget.ImageFilterButton;
 
 import com.iut.jeudelavie.Modele.BoucleDeJeu;
 import com.iut.jeudelavie.Modele.Dieu;
+import com.iut.jeudelavie.Modele.Interface.Observer;
 import com.iut.jeudelavie.Modele.Monde;
 import com.iut.jeudelavie.Modele.Rules;
 import com.iut.jeudelavie.R;
@@ -26,7 +27,7 @@ import java.util.List;
 
 import java.lang.Math;
 
-public class Principale extends AppCompatActivity {
+public class Principale extends AppCompatActivity implements Observer {
     private Button boutonLancement;
     private Button boutonConfig;
     private Button avancer;
@@ -94,7 +95,8 @@ public class Principale extends AppCompatActivity {
                 table.addView(box);
             }
         }
-        boucleDeJeu = new BoucleDeJeu(dieu);
+        boucleDeJeu = new BoucleDeJeu();
+        boucleDeJeu.addListener(this);
         thread = new Thread(boucleDeJeu);
 
 
@@ -142,7 +144,7 @@ public class Principale extends AppCompatActivity {
     public void clicSurBoutonPlay(){
         if(boutonLancement.getText() == "Pause"){
             boutonLancement.setText("Play");
-            BoucleDeJeu.setPlayed(false);
+            start();
         }else{
             boutonLancement.setText("Pause");
             start();
@@ -152,24 +154,34 @@ public class Principale extends AppCompatActivity {
     }
 
     public void start(){
-        thread.start();
-    }
-
-    public void actualiser(){
-        View view;
-        CheckBox box;
-        table.removeAllViews();
-        for (int j = 0; j< 10; j++) {
-            for (int i = 0; i < 10; i++) {
-                view = Tab[j][i];
-                GridLayout.LayoutParams params =(GridLayout.LayoutParams) view.getLayoutParams();
-                params.rowSpec = GridLayout.spec(i);
-                params.columnSpec = GridLayout.spec(j);
-                view.setLayoutParams(params);
-                box=(CheckBox)view;
-                box.setChecked(dieu.getMonde().getGrille()[i][j].getAlive());
-                table.addView(box);
+        switch (boucleDeJeu.getPlayed()){
+            case 0:{
+                boucleDeJeu.setPlayed(1);
+                break;
+            }
+            case 1:{
+                boucleDeJeu.setPlayed(0);
+                break;
+            }
+            case 2:{
+                boucleDeJeu.setPlayed(1);
+                thread.start();
+                break;
             }
         }
+    }
+
+    //il faut modifier actualiser, ça prend beaucoup de ressources et ça marche pas (une erreur que je comprend pas vraiment)
+    // il faut que l'on actualise seulement l'état du checkbox
+    public void actualiser(){
+        for
+
+    }
+
+    @Override
+    public void update() {
+        dieu.evolution();
+        dieu.updateCells();
+        actualiser();
     }
 }
