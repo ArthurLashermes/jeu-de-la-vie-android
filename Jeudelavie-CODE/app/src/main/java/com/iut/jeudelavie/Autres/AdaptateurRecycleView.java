@@ -5,7 +5,19 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.iut.jeudelavie.Modele.Dieu;
+import com.iut.jeudelavie.Modele.Monde;
+
+import java.util.List;
+import java.util.Map;
+
 public class AdaptateurRecycleView extends  RecyclerView.Adapter  {
+
+    private Map<String, Dieu> lesConfig;
+
+    public AdaptateurRecycleView(Map<String, Dieu> lesConfig) {
+        this.lesConfig = lesConfig;
+    }
 
     @NonNull
     @Override
