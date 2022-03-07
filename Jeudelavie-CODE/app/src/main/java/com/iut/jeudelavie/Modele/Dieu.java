@@ -4,11 +4,9 @@ package com.iut.jeudelavie.Modele;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Observable;
-import java.util.Observer;
 
 
-public class Dieu extends Observable {
+public class Dieu {
     /**
      * Contient la grille de cellule et ses dimensions
      */
@@ -22,8 +20,6 @@ public class Dieu extends Observable {
      * Contient les cellules qui ont été traitées, et dont le prochain état a est determiné
      */
     private ArrayList<Cellule> traite;
-
-    private ArrayList<Observer> listObserver = new ArrayList<>();
 
     /**
      * Constructeur de dieu
@@ -107,23 +103,17 @@ public class Dieu extends Observable {
     }
 
     /**
-     * Met toutes les cellules traitées à jour.
+     * Mais toutes les cellules traitées à jour.
      */
     public void updateCells() {
         Iterator<Cellule> it = traite.iterator();
         Cellule cellule;
         while(it.hasNext()){
             cellule = it.next();
-            notifyObservers();
+            cellule.update();
             it.remove();
         }
     }
-
-    public void addObserver(Observer o){
-        listObserver.add(o);
-    }
-
-
 
     /**
      * Getter

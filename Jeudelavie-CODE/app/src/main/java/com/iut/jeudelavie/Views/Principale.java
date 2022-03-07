@@ -15,10 +15,6 @@ import androidx.constraintlayout.utils.widget.ImageFilterButton;
 
 import com.iut.jeudelavie.Modele.BoucleDeJeu;
 import com.iut.jeudelavie.Modele.Dieu;
-<<<<<<< HEAD
-//import com.iut.jeudelavie.Modele.Interface.Observer;
-=======
->>>>>>> parent of c32b945... Le thread fonctionne, avec un observateur qui fonctionne, la boucle de jeu est donc bonne il suffit juste de régler le probème de l'actualisation et le jeu tourne correctement. Après il faudra s'occuper de la configuration.
 import com.iut.jeudelavie.Modele.Monde;
 import com.iut.jeudelavie.Modele.Rules;
 import com.iut.jeudelavie.R;
@@ -29,8 +25,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import java.lang.Math;
-import java.util.Observable;
-import java.util.Observer;
 
 public class Principale extends AppCompatActivity {
     private Button boutonLancement;
@@ -43,9 +37,6 @@ public class Principale extends AppCompatActivity {
 
 
     private Dieu dieu;
-    private BoucleDeJeu boucleDeJeu;
-    private Thread thread;
-
 
 
     /**
@@ -100,8 +91,6 @@ public class Principale extends AppCompatActivity {
                 table.addView(box);
             }
         }
-        boucleDeJeu = new BoucleDeJeu(dieu);
-        thread = new Thread(boucleDeJeu);
 
 
 
@@ -148,40 +137,21 @@ public class Principale extends AppCompatActivity {
     public void clicSurBoutonPlay(){
         if(boutonLancement.getText() == "Pause"){
             boutonLancement.setText("Play");
-            BoucleDeJeu.setPlayed(false);
         }else{
             boutonLancement.setText("Pause");
-            start();
-
         }
-
     }
 
-    //FIXME devrait juste appeler boucleJeu.start
     public void start(){
-        thread.start();
-    }
+//        BoucleDeJeu boucleDeJeu = new BoucleDeJeu();
 
-    public void actualiser(){
-<<<<<<< HEAD
-        /*
-        for
-
-         */
-
-    }
-/*
-    @Override
-    public void update() {
+        //boucleDeJeu.run();
         dieu.evolution();
         dieu.updateCells();
         actualiser();
-    }*/
+    }
 
-    @Override
-    public void update(Observable observable, Object o) {
-
-=======
+    public void actualiser(){
         View view;
         CheckBox box;
         table.removeAllViews();
@@ -197,6 +167,5 @@ public class Principale extends AppCompatActivity {
                 table.addView(box);
             }
         }
->>>>>>> parent of c32b945... Le thread fonctionne, avec un observateur qui fonctionne, la boucle de jeu est donc bonne il suffit juste de régler le probème de l'actualisation et le jeu tourne correctement. Après il faudra s'occuper de la configuration.
     }
 }
