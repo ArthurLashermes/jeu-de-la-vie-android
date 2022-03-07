@@ -15,7 +15,7 @@ import androidx.constraintlayout.utils.widget.ImageFilterButton;
 
 import com.iut.jeudelavie.Modele.BoucleDeJeu;
 import com.iut.jeudelavie.Modele.Dieu;
-import com.iut.jeudelavie.Modele.Interface.Observer;
+//import com.iut.jeudelavie.Modele.Interface.Observer;
 import com.iut.jeudelavie.Modele.Monde;
 import com.iut.jeudelavie.Modele.Rules;
 import com.iut.jeudelavie.R;
@@ -26,6 +26,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import java.lang.Math;
+import java.util.Observable;
+import java.util.Observer;
 
 public class Principale extends AppCompatActivity implements Observer {
     private Button boutonLancement;
@@ -153,6 +155,7 @@ public class Principale extends AppCompatActivity implements Observer {
 
     }
 
+    //FIXME devrait juste appeler boucleJeu.start
     public void start(){
         switch (boucleDeJeu.getPlayed()){
             case 0:{
@@ -174,14 +177,22 @@ public class Principale extends AppCompatActivity implements Observer {
     //il faut modifier actualiser, ça prend beaucoup de ressources et ça marche pas (une erreur que je comprend pas vraiment)
     // il faut que l'on actualise seulement l'état du checkbox
     public void actualiser(){
+        /*
         for
 
-    }
+         */
 
+    }
+/*
     @Override
     public void update() {
         dieu.evolution();
         dieu.updateCells();
         actualiser();
+    }*/
+
+    @Override
+    public void update(Observable observable, Object o) {
+
     }
 }
