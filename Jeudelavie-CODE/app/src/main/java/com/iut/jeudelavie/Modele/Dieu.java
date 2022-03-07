@@ -2,15 +2,13 @@ package com.iut.jeudelavie.Modele;
 
 //import com.iut.jeudelavie.Views.CelluleView;
 
-import com.iut.jeudelavie.Views.Principale;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Observable;
 import java.util.Observer;
 
 
-public class Dieu {
+public class Dieu extends Observable {
     /**
      * Contient la grille de cellule et ses dimensions
      */
@@ -116,10 +114,14 @@ public class Dieu {
         Cellule cellule;
         while(it.hasNext()){
             cellule = it.next();
+            notifyObservers();
             it.remove();
         }
     }
 
+    public void addObserver(Observer o){
+        listObserver.add(o);
+    }
 
 
 
@@ -170,5 +172,6 @@ public class Dieu {
     public void setMonde(Monde monde) {
         this.monde = monde;
     }
+
 
 }
