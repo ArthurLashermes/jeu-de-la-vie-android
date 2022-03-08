@@ -18,7 +18,7 @@
         <activity android:name=".Views.Info">
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".Views.Principale"/>
         </activity>
-        <activity android:name=".Views.Config">
+        <activity android:name=".Views.ConfigActivity">
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".Views.Principale"/>
         </activity>
     </application>

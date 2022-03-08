@@ -6,11 +6,13 @@ import com.iut.jeudelavie.Modele.Rules;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Stub {
 
-    public static Dieu Loader(){
-
+    public HashMap<String, Dieu> Loader(){
+        HashMap<String, Dieu> lesConfig = new HashMap<>();
         Monde monde = new Monde(10,10);
         boolean born[] = new boolean[10];
         boolean survive[] = new boolean[10];
@@ -30,8 +32,16 @@ public class Stub {
         dieu.getMonde().getGrille()[0][2].setAlive(true);
         dieu.getMonde().getGrille()[1][2].setAlive(true);
         dieu.getMonde().getGrille()[2][2].setAlive(true);
-        return dieu;
+        lesConfig.put("glider",dieu);
+        Dieu dieu2 = new Dieu(monde,rules);
+        dieu.getMonde().getGrille()[2][1].setAlive(true);
+        dieu.getMonde().getGrille()[2][2].setAlive(true);
+        dieu.getMonde().getGrille()[2][3].setAlive(true);
+        lesConfig.put("Récursif",dieu2);
+        return lesConfig;
 
     }
+
+
 
 }

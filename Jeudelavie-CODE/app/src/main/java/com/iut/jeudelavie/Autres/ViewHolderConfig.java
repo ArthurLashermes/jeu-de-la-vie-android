@@ -1,6 +1,7 @@
 package com.iut.jeudelavie.Autres;
 
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,4 +16,8 @@ class ViewHolderConfig extends RecyclerView.ViewHolder {
         super(itemView);
         textView = itemView.findViewById(R.id.cellconfig);
     }
+    public TextView getTextView(){
+        return textView;
+    }
+
 }

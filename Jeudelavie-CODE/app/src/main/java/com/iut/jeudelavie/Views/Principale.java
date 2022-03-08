@@ -13,18 +13,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.utils.widget.ImageFilterButton;
 
-import com.iut.jeudelavie.Modele.BoucleDeJeu;
+import com.iut.jeudelavie.Autres.AdaptateurRecycleView;
 import com.iut.jeudelavie.Modele.Dieu;
-import com.iut.jeudelavie.Modele.Monde;
-import com.iut.jeudelavie.Modele.Rules;
 import com.iut.jeudelavie.R;
 import com.iut.jeudelavie.Stub.Stub;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import java.lang.Math;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Principale extends AppCompatActivity {
     private Button boutonLancement;
@@ -57,6 +52,7 @@ public class Principale extends AppCompatActivity {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.principale);
         boutonLancement=findViewById(R.id.lancement);
@@ -64,9 +60,11 @@ public class Principale extends AppCompatActivity {
         info=findViewById(R.id.info);
         table=findViewById(R.id.Table);
         avancer=findViewById(R.id.Avancer);
+        Stub stub = new Stub();
+        HashMap<String,Dieu> lesConfig = stub.Loader();
 
 
-        dieu= Stub.Loader();
+        dieu= lesConfig.get("glider");
         for (int j = 0; j< 10; j++) {
             for (int i = 0; i < 10; i++) {
                 View view=getLayoutInflater().inflate(R.layout.cell, table, false);
@@ -91,6 +89,9 @@ public class Principale extends AppCompatActivity {
                 table.addView(box);
             }
         }
+
+
+        AdaptateurRecycleView adp=new AdaptateurRecycleView(lesConfig);
 
 
 
@@ -124,7 +125,7 @@ public class Principale extends AppCompatActivity {
     }
 
     public void clicSurBoutonConfig(){
-        Intent monIntent = new Intent(this, Config.class);
+        Intent monIntent = new Intent(this, ConfigActivity.class);
         startActivity(monIntent);
     }
 
