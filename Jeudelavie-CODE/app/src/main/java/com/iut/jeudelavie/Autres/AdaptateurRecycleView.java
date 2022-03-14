@@ -35,7 +35,8 @@ public class AdaptateurRecycleView extends  RecyclerView.Adapter  {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         //recuperer mon model item grave a la position
         //binder mon model item sur mon view holder
-        ArrayList<String> laList= (ArrayList<String>) lesConfig.keySet();
+        ArrayList<String> laList=new ArrayList<>();
+        laList.addAll(lesConfig.keySet());
         String elementCourant =laList.get(position);
         ((ViewHolderConfig)holder).getTextView().setText(elementCourant);
 
