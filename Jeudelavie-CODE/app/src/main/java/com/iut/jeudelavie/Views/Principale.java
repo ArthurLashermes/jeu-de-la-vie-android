@@ -13,13 +13,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.utils.widget.ImageFilterButton;
 
-import com.iut.jeudelavie.Autres.AdaptateurRecycleView;
+import com.iut.jeudelavie.BaseApplication;
+import com.iut.jeudelavie.autres.AdaptateurRecycleView;
 import com.iut.jeudelavie.Modele.Dieu;
 import com.iut.jeudelavie.R;
 import com.iut.jeudelavie.Stub.Stub;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class Principale extends AppCompatActivity {
     private Button boutonLancement;
@@ -31,7 +31,7 @@ public class Principale extends AppCompatActivity {
     private CheckBox Tab[][]= new CheckBox[10][10];
 
 
-    private Dieu dieu;
+    public Dieu dieu = BaseApplication.getInstance().getDieu();
 
 
     /**
@@ -63,8 +63,7 @@ public class Principale extends AppCompatActivity {
         Stub stub = new Stub();
         HashMap<String,Dieu> lesConfig = stub.Loader();
 
-
-        dieu= lesConfig.get("glider");
+        dieu=lesConfig.get("glider");
         for (int j = 0; j< 10; j++) {
             for (int i = 0; i < 10; i++) {
                 View view=getLayoutInflater().inflate(R.layout.cell, table, false);

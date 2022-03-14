@@ -33,11 +33,24 @@ public class Stub {
         dieu.getMonde().getGrille()[1][2].setAlive(true);
         dieu.getMonde().getGrille()[2][2].setAlive(true);
         lesConfig.put("glider",dieu);
-        Dieu dieu2 = new Dieu(monde,rules);
-        dieu.getMonde().getGrille()[2][1].setAlive(true);
-        dieu.getMonde().getGrille()[2][2].setAlive(true);
-        dieu.getMonde().getGrille()[2][3].setAlive(true);
-        lesConfig.put("Récursif",dieu2);
+
+        Monde monde2 = new Monde(10,10);
+        boolean born2[] = new boolean[10];
+        boolean survive2[] = new boolean[10];
+        Arrays.fill(born2, false);
+        Arrays.fill(survive2, false);
+        born2[3]=true;
+        survive2[2]=true;
+        survive2[3]=true;
+
+        Rules rules2 = new Rules(born2,survive2);
+
+        Dieu dieu2 = new Dieu(monde2,rules2);
+        dieu2.getMonde().getGrille()[2][1].setAlive(true);
+        dieu2.getMonde().getGrille()[2][2].setAlive(true);
+        dieu2.getMonde().getGrille()[2][3].setAlive(true);
+
+        lesConfig.put("recursif",dieu2);
         return lesConfig;
 
     }

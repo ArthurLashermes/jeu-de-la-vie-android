@@ -1,4 +1,4 @@
-package com.iut.jeudelavie.Autres;
+package com.iut.jeudelavie.autres;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -13,12 +13,11 @@ import com.iut.jeudelavie.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class AdaptateurRecycleView extends  RecyclerView.Adapter  {
 
     private HashMap<String, Dieu> lesConfig;
+    private OnItemClick onItemClick;
 
     public AdaptateurRecycleView(HashMap<String, Dieu> lesConfig) {
         this.lesConfig = lesConfig;
@@ -28,7 +27,7 @@ public class AdaptateurRecycleView extends  RecyclerView.Adapter  {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LinearLayout ln= (LinearLayout) LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_demo, parent, false);
-        return new ViewHolderConfig(ln);
+        return new ViewHolderConfig(ln, onItemClick);
     }
 
     @Override
@@ -45,5 +44,9 @@ public class AdaptateurRecycleView extends  RecyclerView.Adapter  {
     @Override
     public int getItemCount() {
         return lesConfig.size();
+    }
+
+    public interface OnItemClick {
+        void onMondeClicked(Monde monde);
     }
 }
