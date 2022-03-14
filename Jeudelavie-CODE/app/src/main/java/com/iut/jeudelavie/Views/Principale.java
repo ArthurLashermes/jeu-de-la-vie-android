@@ -70,31 +70,32 @@ public class Principale extends AppCompatActivity implements Observer {
         avancer=findViewById(R.id.Avancer);
 
 
-        dieu= Stub.Loader();
-        for (int j = 0; j< 10; j++) {
-            for (int i = 0; i < 10; i++) {
-                View view=getLayoutInflater().inflate(R.layout.cell, table, false);
-                GridLayout.LayoutParams params =(GridLayout.LayoutParams)view.getLayoutParams();
-                params.rowSpec = GridLayout.spec(i);
-                params.columnSpec = GridLayout.spec(j);
-                view.setLayoutParams(params);
-                CheckBox box=(CheckBox)view;
-                box.setChecked(dieu.getMonde().getGrille()[i][j].getAlive());
-                int finalI1 = i;
-                int finalJ = j;
-                box.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                        if(b){
-                            dieu.getMonde().getGrille()[finalI1][finalJ].setAlive(true);
-                        }
-                    }
-                });
-                Tab[j][i]=box;
-
-                table.addView(box);
-            }
-        }
+        dieu= Stub.Loader(this);
+//        for (int j = 0; j< 10; j++) {
+//            for (int i = 0; i < 10; i++) {
+//                View view=getLayoutInflater().inflate(R.layout.cell, table, false);
+//                GridLayout.LayoutParams params =(GridLayout.LayoutParams)view.getLayoutParams();
+//                params.rowSpec = GridLayout.spec(i);
+//                params.columnSpec = GridLayout.spec(j);
+//                view.setLayoutParams(params);
+//                CheckBox box=(CheckBox)view;
+//                box.setChecked(dieu.getMonde().getGrille()[i][j].getCellule().getAlive());
+//                int finalI1 = i;
+//                int finalJ = j;
+//                box.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//                    @Override
+//                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                        if(b){
+//                            dieu.getMonde().getGrille()[finalI1][finalJ].getCellule().setAlive(true);
+//                        }
+//                    }
+//                });
+//                Tab[j][i]=box;
+//
+//                table.addView(box);
+//            }
+//        }
+        TabCells tabCells = new TabCells(this, dieu);
         boucleDeJeu = new BoucleDeJeu();
         boucleDeJeu.addListener(this);
         thread = new Thread(boucleDeJeu);
@@ -174,7 +175,7 @@ public class Principale extends AppCompatActivity implements Observer {
     //il faut modifier actualiser, ça prend beaucoup de ressources et ça marche pas (une erreur que je comprend pas vraiment)
     // il faut que l'on actualise seulement l'état du checkbox
     public void actualiser(){
-        for
+
 
     }
 
@@ -182,6 +183,6 @@ public class Principale extends AppCompatActivity implements Observer {
     public void update() {
         dieu.evolution();
         dieu.updateCells();
-        actualiser();
+        //actualiser();
     }
 }

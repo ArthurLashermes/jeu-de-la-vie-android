@@ -32,8 +32,8 @@ public class Dieu {
      * @param monde un dieu possède un monde
      * @param rules un dieu connait aussi les règles
      */
-    public Dieu(Monde monde,Rules rules){
-        this.monde = monde;
+    public Dieu(Rules rules){
+//        this.monde = monde;
         this.rules = rules;
         this.traite = new ArrayList<>();
     }
@@ -44,7 +44,7 @@ public class Dieu {
     public static void clearGrid() {
         for(int x=0;x<monde.getTailleX();x++){
             for(int y=0;y<monde.getTailleY();y++){
-                monde.getGrille()[x][y].setAlive(false);
+                monde.getGrille()[x][y].getCellule().setAlive(false);
             }
         }
     }
@@ -55,7 +55,7 @@ public class Dieu {
     public void evolution(){
         for(int x=0; x<monde.getTailleX();x++){
             for(int y=0;y<monde.getTailleY();y++){
-                Cellule current = monde.getGrille()[x][y];
+                Cellule current = monde.getGrille()[x][y].getCellule();
                 if (!traite.contains(current)) {
                     evolveCell(current);
                     traite.add(current);
@@ -95,7 +95,7 @@ public class Dieu {
             for(int y=j-1;y<=j+1;y++){
                 if(x >= 0 && x < monde.getTailleX() && y >= 0 && y < monde.getTailleY()) {
                     //CelluleView current = monde.getGrille()[x][y];
-                    Cellule current = monde.getGrille()[x][y];
+                    Cellule current = monde.getGrille()[x][y].getCellule();
 
                     if(x!=i || y!=j){
                         if (current.isAlive()) {

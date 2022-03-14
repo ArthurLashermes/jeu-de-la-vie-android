@@ -1,10 +1,15 @@
 package com.iut.jeudelavie.Modele;
 
+import android.widget.CompoundButton;
+
 import androidx.fragment.app.Fragment;
 
 import com.iut.jeudelavie.R;
 
-public class Cellule{
+import java.util.ArrayList;
+import java.util.Observer;
+
+public class Cellule implements CompoundButton.OnCheckedChangeListener {
     /**
      * Etat de la cellule au prochain tour de boucle. -1 signifie que la cellule va mourir, 1 signifie qu'elle va naitre, 0 ne change rien
      */
@@ -23,6 +28,8 @@ public class Cellule{
      * Coordonnée Y de la cellule dans la grille
      */
     private int y;
+
+    private ArrayList<Observer> listObserver = new ArrayList<>();
 
     /**
      * Constructeur d'une cellule
@@ -113,6 +120,11 @@ public class Cellule{
         return alive;
     }
 
+    public void addListener(Observer observer){
+        listObserver.add(observer);
+    }
+
+
     @Override
     public String toString() {
         return "Cellule{" +
@@ -121,5 +133,10 @@ public class Cellule{
                 ", x=" + x +
                 ", y=" + y +
                 '}';
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+        this.alive = b;
     }
 }

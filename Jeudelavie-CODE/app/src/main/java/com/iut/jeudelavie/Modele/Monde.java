@@ -3,6 +3,10 @@ package com.iut.jeudelavie.Modele;
 
 //import com.iut.jeudelavie.Views.CelluleView;
 
+import android.content.Context;
+
+import com.iut.jeudelavie.Views.CelluleView;
+
 public class Monde{
 
     /**
@@ -35,7 +39,7 @@ public class Monde{
     /**
      * Grille de cellule.
      */
-    private Cellule[][] grille;
+    private CelluleView[][] grille;
 
 
     /**
@@ -43,17 +47,17 @@ public class Monde{
      * @param tailleX Taille X du monde
      * @param tailleY Taille Y du monde
      */
-    public Monde(int tailleX, int tailleY) {
+    public Monde(Context context, int tailleX, int tailleY) {
         setTailleX(tailleX);
         setTailleY(tailleY);
-        grille = GrilleCellFactory.createCellGrid(tailleX,tailleY);
+//        grille = GrilleCellFactory.createCellGrid(context,tailleX,tailleY);
     }
 
     /**
      * Getter
      * @return
      */
-    public Cellule[][] getGrille() {
+    public CelluleView[][] getGrille() {
         return grille;
     }
 
@@ -61,7 +65,7 @@ public class Monde{
      * Setter
      * @param grille
      */
-    public void setGrille(Cellule[][] grille) {
+    public void setGrille(CelluleView[][] grille) {
         this.grille = grille;
     }
 }
