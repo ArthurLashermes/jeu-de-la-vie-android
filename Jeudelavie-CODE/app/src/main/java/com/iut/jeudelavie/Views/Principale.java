@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.utils.widget.ImageFilterButton;
 
 import com.iut.jeudelavie.BaseApplication;
+import com.iut.jeudelavie.Modele.BoucleDeJeu;
 import com.iut.jeudelavie.Modele.Monde;
 import com.iut.jeudelavie.autres.AdaptateurRecycleView;
 import com.iut.jeudelavie.Modele.Dieu;
@@ -127,6 +128,9 @@ public class Principale extends AppCompatActivity {
                 clicSurBoutonConfig();
             }
         });
+
+
+
     }
 
     public void clicSurBoutonConfig(){

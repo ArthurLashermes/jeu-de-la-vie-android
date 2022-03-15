@@ -1,12 +1,13 @@
 package com.iut.jeudelavie.Modele;
 
 
+import com.iut.jeudelavie.BaseApplication;
 
 public class BoucleDeJeu implements Runnable{
     /**
      * Instance du dieu
      */
-    private final Dieu dieu ;
+    private Dieu dieu;
 
     /**
      * Indique à la pause si elle est lancé ou non
@@ -44,12 +45,12 @@ public class BoucleDeJeu implements Runnable{
     @Override
     public void run() {
         while(true){
-            if(BoucleDeJeu.getPlayed()){
+            if(BoucleDeJeu.played){
                 dieu.evolution();
                 dieu.updateCells();
             }
             try { //ne pas mettre dans la boucle, sinon ça ne tourne pas
-                Thread.sleep(getTime());
+                Thread.sleep(time);
             } catch(Exception e){
                 e.printStackTrace();
             }
