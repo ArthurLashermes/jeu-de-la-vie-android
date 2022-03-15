@@ -1,12 +1,14 @@
 package com.iut.jeudelavie.Views;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.iut.jeudelavie.BaseApplication;
 import com.iut.jeudelavie.autres.AdaptateurRecycleView;
 import com.iut.jeudelavie.Modele.Dieu;
 import com.iut.jeudelavie.Modele.Monde;
@@ -22,12 +24,14 @@ public class ConfigActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_config);
         RecyclerView laListView = findViewById(R.id.lalistview);
-        AdaptateurRecycleView ARV = new AdaptateurRecycleView(new Stub().Loader(), new AdaptateurRecycleView.OnItemClick() {
+        AdaptateurRecycleView ARV = new AdaptateurRecycleView(new Stub().LoadMonde(), new AdaptateurRecycleView.OnItemClick() {
             @Override
             public void onMondeClicked(Monde monde) {
-
+                BaseApplication.getInstance().getDieu().getMonde().setGrille(monde.getGrille());
             }
         });
+
+
         laListView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
         laListView.setAdapter(ARV);
 

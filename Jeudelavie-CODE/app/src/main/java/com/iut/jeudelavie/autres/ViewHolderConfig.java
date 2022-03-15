@@ -1,6 +1,6 @@
 package com.iut.jeudelavie.autres;
 
-import static com.iut.jeudelavie.Views.Principale.dieu;
+//import static com.iut.jeudelavie.Views.Principale.dieu;
 
 import android.view.View;
 import android.widget.TextView;
@@ -11,6 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.iut.jeudelavie.R;
 import com.iut.jeudelavie.Stub.Stub;
+import com.iut.jeudelavie.Modele.Dieu;
+import com.iut.jeudelavie.Modele.Monde;
+
 
 class ViewHolderConfig extends RecyclerView.ViewHolder {
     private final TextView textView;
@@ -23,9 +26,8 @@ class ViewHolderConfig extends RecyclerView.ViewHolder {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(), " position = " + textView.getText(), Toast.LENGTH_SHORT).show();
-                listener.onMondeClicked(monde);
-                dieu.setMonde(new Stub().Loader().get(textView.getText()).getMonde());
+                Monde md=new Stub().LoadMonde().get(textView.getText());
+                listener.onMondeClicked(md);
             }
         });
     }

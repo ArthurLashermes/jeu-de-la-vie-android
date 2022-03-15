@@ -9,12 +9,16 @@ public class BaseApplication extends Application {
 
     private static BaseApplication instance;
 
-    private Dieu dieu= new Stub().Loader().get("recursif");
+    private Dieu dieu;
 
     public static BaseApplication getInstance() {
         return instance;
     }
-    public dieu getDieu() {
+
+    public Dieu getDieu() {
+        if(dieu == null){
+            dieu=new Stub().Loader().get("recursif");
+        }
         return dieu;
     }
 

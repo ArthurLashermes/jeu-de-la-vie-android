@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.utils.widget.ImageFilterButton;
 
 import com.iut.jeudelavie.BaseApplication;
+import com.iut.jeudelavie.Modele.Monde;
 import com.iut.jeudelavie.autres.AdaptateurRecycleView;
 import com.iut.jeudelavie.Modele.Dieu;
 import com.iut.jeudelavie.R;
@@ -63,7 +64,8 @@ public class Principale extends AppCompatActivity {
         Stub stub = new Stub();
         HashMap<String,Dieu> lesConfig = stub.Loader();
 
-        dieu=lesConfig.get("glider");
+        dieu=BaseApplication.getInstance().getDieu();
+
         for (int j = 0; j< 10; j++) {
             for (int i = 0; i < 10; i++) {
                 View view=getLayoutInflater().inflate(R.layout.cell, table, false);
@@ -89,8 +91,12 @@ public class Principale extends AppCompatActivity {
             }
         }
 
-
-        AdaptateurRecycleView adp=new AdaptateurRecycleView(lesConfig);
+/*
+        AdaptateurRecycleView adp=new AdaptateurRecycleView(new Stub().LoadMonde(), new AdaptateurRecycleView.OnItemClick() {
+            @Override
+            public void onMondeClicked(Monde monde) {
+            }
+        });*/
 
 
 
@@ -148,6 +154,12 @@ public class Principale extends AppCompatActivity {
         //boucleDeJeu.run();
         dieu.evolution();
         dieu.updateCells();
+        actualiser();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         actualiser();
     }
 

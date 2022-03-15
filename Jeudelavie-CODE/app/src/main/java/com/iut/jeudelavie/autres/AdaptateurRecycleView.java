@@ -16,11 +16,12 @@ import java.util.HashMap;
 
 public class AdaptateurRecycleView extends  RecyclerView.Adapter  {
 
-    private HashMap<String, Dieu> lesConfig;
+    private HashMap<String, Monde> lesConfig;
     private OnItemClick onItemClick;
 
-    public AdaptateurRecycleView(HashMap<String, Dieu> lesConfig) {
+    public AdaptateurRecycleView(HashMap<String, Monde> lesConfig,AdaptateurRecycleView.OnItemClick adp) {
         this.lesConfig = lesConfig;
+        this.onItemClick=adp;
     }
 
     @NonNull
