@@ -21,7 +21,7 @@ public class GrilleCellFactory {
         CelluleView[][] grille = new CelluleView[sizeX][sizeY];
         for(int x=0;x<sizeX;x++){
             for(int y=0;y<sizeY;y++){
-//                grille[x][y] = new CelluleView(context, x, y);
+                grille[x][y] = new CelluleView(context, x, y);
             }
         }
 

@@ -1,14 +1,11 @@
 package com.iut.jeudelavie.Modele;
 import android.util.Log;
 
-//import com.iut.jeudelavie.Modele.Interface.Observer;
-
+import com.iut.jeudelavie.Modele.Interface.Observer;
 import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
 
 
-public class BoucleDeJeu extends Observable implements Runnable{
+public class BoucleDeJeu implements Runnable{
 
     /**
      * Indique à la pause si elle est lancée ou non
@@ -55,7 +52,7 @@ public class BoucleDeJeu extends Observable implements Runnable{
 
     public void notifyObservers(){
         for (Observer o : listObserver){
-            o.update(this, null);
+            o.update();
         }
     }
 

@@ -50,7 +50,7 @@ public class Monde{
     public Monde(Context context, int tailleX, int tailleY) {
         setTailleX(tailleX);
         setTailleY(tailleY);
-//        grille = GrilleCellFactory.createCellGrid(context,tailleX,tailleY);
+        grille = GrilleCellFactory.createCellGrid(context,tailleX,tailleY);
     }
 
     /**

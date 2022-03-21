@@ -13,7 +13,7 @@ public class Stub {
 
     public static Dieu Loader(Context context){
 
-//        Monde monde = new Monde(context, 10,10);
+        Monde monde = new Monde(context, 10,10);
         boolean born[] = new boolean[10];
         boolean survive[] = new boolean[10];
         Arrays.fill(born, false);
@@ -24,6 +24,7 @@ public class Stub {
 
         Rules rules = new Rules(born,survive);
         Dieu dieu = new Dieu(rules);
+        dieu.setMonde(monde);
 
 
         //glider
