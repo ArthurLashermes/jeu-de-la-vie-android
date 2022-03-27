@@ -1,19 +1,16 @@
-package com.iut.jeudelavie.autres;
+package com.iut.jeudelavie.Autres;
 
 //import static com.iut.jeudelavie.Views.Principale.dieu;
 
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.iut.jeudelavie.R;
 import com.iut.jeudelavie.Stub.Stub;
-import com.iut.jeudelavie.Modele.Dieu;
 import com.iut.jeudelavie.Modele.Monde;
-import com.iut.jeudelavie.Autres.AdaptateurRecycleView;
 
 public class ViewHolderConfig extends RecyclerView.ViewHolder {
     private final TextView textView;

@@ -7,12 +7,10 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.iut.jeudelavie.Modele.Dieu;
 import com.iut.jeudelavie.Modele.Monde;
 import com.iut.jeudelavie.R;
 import java.util.ArrayList;
 import java.util.HashMap;
-import com.iut.jeudelavie.Autres.*;
 
 public class AdaptateurRecycleView extends  RecyclerView.Adapter  {
 
@@ -28,7 +26,7 @@ public class AdaptateurRecycleView extends  RecyclerView.Adapter  {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LinearLayout ln= (LinearLayout) LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_demo, parent, false);
-        return new com.iut.jeudelavie.autres.ViewHolderConfig(ln, onItemClick);
+        return new com.iut.jeudelavie.Autres.ViewHolderConfig(ln, onItemClick);
     }
 
     @Override
@@ -38,7 +36,7 @@ public class AdaptateurRecycleView extends  RecyclerView.Adapter  {
         ArrayList<String> laList=new ArrayList<>();
         laList.addAll(lesConfig.keySet());
         String elementCourant =laList.get(position);
-        ((com.iut.jeudelavie.autres.ViewHolderConfig)holder).getTextView().setText(elementCourant);
+        ((com.iut.jeudelavie.Autres.ViewHolderConfig)holder).getTextView().setText(elementCourant);
 
     }
 

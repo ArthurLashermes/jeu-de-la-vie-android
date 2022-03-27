@@ -50,7 +50,7 @@ public class BoucleDeJeu implements Runnable{
             if(BoucleDeJeu.played){
                 notifyObservers();
             }
-            try { //ne pas mettre dans la boucle, sinon ça ne tourne pas
+            try {
                 Thread.sleep(time);
             } catch(Exception e){
                 e.printStackTrace();
