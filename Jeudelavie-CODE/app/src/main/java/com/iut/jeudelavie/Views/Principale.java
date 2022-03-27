@@ -13,19 +13,20 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.utils.widget.ImageFilterButton;
 
+import com.iut.jeudelavie.BaseApplication;
 import com.iut.jeudelavie.Modele.BoucleDeJeu;
+
 import com.iut.jeudelavie.Modele.Dieu;
 import com.iut.jeudelavie.Modele.Interface.Observer;
 import com.iut.jeudelavie.Modele.Monde;
-import com.iut.jeudelavie.Modele.Rules;
+import com.iut.jeudelavie.Autres.AdaptateurRecycleView;
+import com.iut.jeudelavie.Modele.Dieu;
 import com.iut.jeudelavie.R;
 import com.iut.jeudelavie.Stub.Stub;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
-import java.lang.Math;
+import java.util.HashMap;
+
 
 public class Principale extends AppCompatActivity implements Observer {
     private Button boutonLancement;
@@ -33,14 +34,12 @@ public class Principale extends AppCompatActivity implements Observer {
     private Button avancer;
     private ImageFilterButton info;
     private GridLayout table;
-
+    private BoucleDeJeu boucleDeJeu;
+    private Thread thread;
     private CheckBox Tab[][]= new CheckBox[10][10];
 
 
-    private Dieu dieu;
-    private BoucleDeJeu boucleDeJeu;
-    private Thread thread;
-
+    public Dieu dieu = BaseApplication.getInstance().getDieu();
 
 
     /**
@@ -61,6 +60,7 @@ public class Principale extends AppCompatActivity implements Observer {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.principale);
         boutonLancement=findViewById(R.id.lancement);
@@ -68,38 +68,54 @@ public class Principale extends AppCompatActivity implements Observer {
         info=findViewById(R.id.info);
         table=findViewById(R.id.Table);
         avancer=findViewById(R.id.Avancer);
+        Stub stub = new Stub();
+        HashMap<String,Dieu> lesConfig = stub.Loader(getBaseContext());
+
+        dieu=BaseApplication.getInstance().getDieu();
 
 
-        dieu= Stub.Loader(this);
-//        for (int j = 0; j< 10; j++) {
-//            for (int i = 0; i < 10; i++) {
-//                View view=getLayoutInflater().inflate(R.layout.cell, table, false);
-//                GridLayout.LayoutParams params =(GridLayout.LayoutParams)view.getLayoutParams();
-//                params.rowSpec = GridLayout.spec(i);
-//                params.columnSpec = GridLayout.spec(j);
-//                view.setLayoutParams(params);
-//                CheckBox box=(CheckBox)view;
-//                box.setChecked(dieu.getMonde().getGrille()[i][j].getCellule().getAlive());
-//                int finalI1 = i;
-//                int finalJ = j;
-//                box.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//                    @Override
-//                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-//                        if(b){
-//                            dieu.getMonde().getGrille()[finalI1][finalJ].getCellule().setAlive(true);
-//                        }
-//                    }
-//                });
-//                Tab[j][i]=box;
-//
-//                table.addView(box);
-//            }
-//        }
+        for (int j = 0; j< 10; j++) {
+            for (int i = 0; i < 10; i++) {
+                View view=getLayoutInflater().inflate(R.layout.cell, table, false);
+                GridLayout.LayoutParams params =(GridLayout.LayoutParams)view.getLayoutParams();
+                params.rowSpec = GridLayout.spec(i);
+                params.columnSpec = GridLayout.spec(j);
+                view.setLayoutParams(params);
+                CheckBox box=(CheckBox)view;
+                box.setChecked(dieu.getMonde().getGrille()[i][j].getAlive());
+                int finalI1 = i;
+                int finalJ = j;
+                box.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                        if(b){
+                            dieu.getMonde().getGrille()[finalI1][finalJ].setAlive(true);
+                        }
+                    }
+                });
+                Tab[j][i]=box;
+
+                table.addView(box);
+            }
+        }
+        boutonLancement.setText("play");
+                /*
         TabCells tabCells = new TabCells(this, dieu);
-        boucleDeJeu = new BoucleDeJeu();
-        boucleDeJeu.addListener(this);
-        thread = new Thread(boucleDeJeu);
 
+         */
+
+        /*
+        AdaptateurRecycleView adp=new AdaptateurRecycleView(new Stub().LoadMonde(), new AdaptateurRecycleView.OnItemClick() {
+            @Override
+            public void onMondeClicked(Monde monde) {
+            }
+        });*/
+
+        boucleDeJeu = new BoucleDeJeu(dieu);
+        boucleDeJeu.addListener(this);
+        boucleDeJeu.setTime(200);
+        thread = new Thread(boucleDeJeu);
+        thread.start();
 
 
 
@@ -129,10 +145,13 @@ public class Principale extends AppCompatActivity implements Observer {
                 clicSurBoutonConfig();
             }
         });
+
+
+
     }
 
     public void clicSurBoutonConfig(){
-        Intent monIntent = new Intent(this, Config.class);
+        Intent monIntent = new Intent(this, ConfigActivity.class);
         startActivity(monIntent);
     }
 
@@ -143,46 +162,55 @@ public class Principale extends AppCompatActivity implements Observer {
 
 
     public void clicSurBoutonPlay(){
-        if(boutonLancement.getText() == "Pause"){
-            boutonLancement.setText("Play");
-            start();
+
+        if(boutonLancement.getText() == "play"){
+            boutonLancement.setText("stop");
+            boucleDeJeu.setPlayed(true);
         }else{
-            boutonLancement.setText("Pause");
-            start();
-
-        }
-
-    }
-
-    public void start(){
-        switch (boucleDeJeu.getPlayed()){
-            case 0:{
-                boucleDeJeu.setPlayed(1);
-                break;
-            }
-            case 1:{
-                boucleDeJeu.setPlayed(0);
-                break;
-            }
-            case 2:{
-                boucleDeJeu.setPlayed(1);
-                thread.start();
-                break;
-            }
+            boutonLancement.setText("play");
+            boucleDeJeu.setPlayed(false);
         }
     }
+
+    public void start(){update();}
+//        BoucleDeJeu boucleDeJeu = new BoucleDeJeu();
 
     //il faut modifier actualiser, ça prend beaucoup de ressources et ça marche pas (une erreur que je comprend pas vraiment)
     // il faut que l'on actualise seulement l'état du checkbox
-    public void actualiser(){
 
+    public void update() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                dieu.evolution();
+                dieu.updateCells();
+                actualiser();
+            }
+        });
 
     }
 
     @Override
-    public void update() {
-        dieu.evolution();
-        dieu.updateCells();
-        //actualiser();
+    protected void onStart() {
+        super.onStart();
+        actualiser();
+    }
+
+    public void actualiser(){
+        View view;
+        CheckBox box;
+        table.removeAllViews();
+        for (int j = 0; j< 10; j++) {
+            for (int i = 0; i < 10; i++) {
+                view = Tab[j][i];
+                GridLayout.LayoutParams params =(GridLayout.LayoutParams) view.getLayoutParams();
+                params.rowSpec = GridLayout.spec(i);
+                params.columnSpec = GridLayout.spec(j);
+                view.setLayoutParams(params);
+                box=(CheckBox)view;
+                box.setChecked(dieu.getMonde().getGrille()[i][j].getAlive());
+                table.addView(box);
+            }
+        }
     }
 }

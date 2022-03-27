@@ -1,6 +1,6 @@
 package com.iut.jeudelavie.Views;
 
-
+/*
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -38,3 +38,4 @@ public class CelluleView extends MaterialCheckBox {
 
     }
 }
+*/

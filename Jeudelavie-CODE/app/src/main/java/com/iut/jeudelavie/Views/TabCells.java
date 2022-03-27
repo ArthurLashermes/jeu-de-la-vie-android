@@ -1,5 +1,5 @@
 package com.iut.jeudelavie.Views;
-
+/*
 import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,3 +43,4 @@ public class TabCells {
         return table;
     }
 }
+*/

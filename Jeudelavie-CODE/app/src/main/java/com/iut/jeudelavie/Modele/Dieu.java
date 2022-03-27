@@ -2,15 +2,13 @@ package com.iut.jeudelavie.Modele;
 
 //import com.iut.jeudelavie.Views.CelluleView;
 
-import com.iut.jeudelavie.Views.Principale;
+
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Observable;
-import java.util.Observer;
 
 
-public class Dieu {
+public class Dieu{
     /**
      * Contient la grille de cellule et ses dimensions
      */
@@ -25,15 +23,13 @@ public class Dieu {
      */
     private ArrayList<Cellule> traite;
 
-    private ArrayList<Observer> listObserver = new ArrayList<>();
-
     /**
      * Constructeur de dieu
      * @param monde un dieu possède un monde
      * @param rules un dieu connait aussi les règles
      */
-    public Dieu(Rules rules){
-//        this.monde = monde;
+    public Dieu(Rules rules,Monde monde){
+        this.monde = monde;
         this.rules = rules;
         this.traite = new ArrayList<>();
     }
@@ -44,7 +40,7 @@ public class Dieu {
     public static void clearGrid() {
         for(int x=0;x<monde.getTailleX();x++){
             for(int y=0;y<monde.getTailleY();y++){
-                monde.getGrille()[x][y].getCellule().setAlive(false);
+                monde.getGrille()[x][y].setAlive(false);
             }
         }
     }
@@ -55,7 +51,7 @@ public class Dieu {
     public void evolution(){
         for(int x=0; x<monde.getTailleX();x++){
             for(int y=0;y<monde.getTailleY();y++){
-                Cellule current = monde.getGrille()[x][y].getCellule();
+                Cellule current = monde.getGrille()[x][y];
                 if (!traite.contains(current)) {
                     evolveCell(current);
                     traite.add(current);
@@ -95,7 +91,7 @@ public class Dieu {
             for(int y=j-1;y<=j+1;y++){
                 if(x >= 0 && x < monde.getTailleX() && y >= 0 && y < monde.getTailleY()) {
                     //CelluleView current = monde.getGrille()[x][y];
-                    Cellule current = monde.getGrille()[x][y].getCellule();
+                    Cellule current = monde.getGrille()[x][y];
 
                     if(x!=i || y!=j){
                         if (current.isAlive()) {
@@ -109,19 +105,17 @@ public class Dieu {
     }
 
     /**
-     * Met toutes les cellules traitées à jour.
+     * Mais toutes les cellules traitées à jour.
      */
     public void updateCells() {
         Iterator<Cellule> it = traite.iterator();
         Cellule cellule;
         while(it.hasNext()){
             cellule = it.next();
+            cellule.update();
             it.remove();
         }
     }
-
-
-
 
     /**
      * Getter
