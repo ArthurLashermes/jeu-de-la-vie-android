@@ -371,8 +371,8 @@
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 676.5,
-									"top": 347.5,
+									"left": 884.5,
+									"top": 331.5,
 									"width": 176,
 									"height": 25,
 									"stereotypeLabel": {
@@ -572,7 +572,7 @@
 									"font": "Arial;13;0",
 									"left": 681.5,
 									"top": 591,
-									"width": 200.0107421875,
+									"width": 199,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF9dVMujGpQyHc="
@@ -1010,8 +1010,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 645,
-									"top": 426,
+									"left": 745,
+									"top": 416,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -1030,8 +1030,8 @@
 										"$ref": "AAAAAAF+eDt/Vgrl3IQ="
 									},
 									"font": "Arial;13;0",
-									"left": 610,
-									"top": 414,
+									"left": 713,
+									"top": 402,
 									"width": 53.49169921875,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -1053,8 +1053,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 664,
-									"top": 449,
+									"left": 756,
+									"top": 443,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -2947,7 +2947,7 @@
 											"top": 502,
 											"width": 719,
 											"height": 13,
-											"text": "+surviveRule: array<SimpleBooleanProperty>",
+											"text": "+surviveRule: array<Boolean>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2964,7 +2964,7 @@
 											"top": 517,
 											"width": 719,
 											"height": 13,
-											"text": "+bornRule: array<SimpleBooleanProperty>",
+											"text": "+bornRule: array<Boolean>",
 											"horizontalAlignment": 0
 										}
 									],
@@ -3032,7 +3032,7 @@
 											"top": 570,
 											"width": 719,
 											"height": 13,
-											"text": "+Rules(bornRules : array<SimpleBooleanProperty>, surviveRule : array<SimpleBooleanProperty>)",
+											"text": "+Rules(bornRules : array<Boolean>, surviveRule : array<Boolean>)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -4423,8 +4423,8 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": -256,
-											"top": 544,
+											"left": -352,
+											"top": 528,
 											"height": 13
 										},
 										{
@@ -4434,8 +4434,8 @@
 												"$ref": "AAAAAAF+eE5pEWTSKQM="
 											},
 											"font": "Arial;13;1",
-											"left": 661,
-											"top": 847,
+											"left": 613,
+											"top": 839,
 											"width": 183.16796875,
 											"height": 13,
 											"text": "BoucleDeJeu : Runable"
@@ -4448,8 +4448,8 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": -256,
-											"top": 544,
+											"left": -352,
+											"top": 528,
 											"width": 80.9072265625,
 											"height": 13,
 											"text": "(from Modele)"
@@ -4462,15 +4462,15 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": -256,
-											"top": 544,
+											"left": -352,
+											"top": 528,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 656,
-									"top": 840,
+									"left": 608,
+									"top": 832,
 									"width": 193.16796875,
 									"height": 25,
 									"stereotypeLabel": {
@@ -4498,23 +4498,6 @@
 									"subViews": [
 										{
 											"_type": "UMLAttributeView",
-											"_id": "AAAAAAF+eE9VYmiQUnA=",
-											"_parent": {
-												"$ref": "AAAAAAF+eE5pEWTX7sA="
-											},
-											"model": {
-												"$ref": "AAAAAAF+eE9VWmiBFsk="
-											},
-											"font": "Arial;13;0",
-											"left": 661,
-											"top": 870,
-											"width": 183.16796875,
-											"height": 13,
-											"text": "+traite: array<Object>",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLAttributeView",
 											"_id": "AAAAAAF+eFLunW4GfBM=",
 											"_parent": {
 												"$ref": "AAAAAAF+eE5pEWTX7sA="
@@ -4523,11 +4506,11 @@
 												"$ref": "AAAAAAF+eFLulW33T2E="
 											},
 											"font": "Arial;13;0",
-											"left": 661,
-											"top": 885,
+											"left": 613,
+											"top": 862,
 											"width": 183.16796875,
 											"height": 13,
-											"text": "+time: integerProperty",
+											"text": "+time: int",
 											"horizontalAlignment": 0
 										},
 										{
@@ -4540,8 +4523,8 @@
 												"$ref": "AAAAAAF+eFMyVW6Ucr8="
 											},
 											"font": "Arial;13;0",
-											"left": 661,
-											"top": 900,
+											"left": 613,
+											"top": 877,
 											"width": 183.16796875,
 											"height": 13,
 											"text": "+played: boolean",
@@ -4557,8 +4540,8 @@
 												"$ref": "AAAAAAF/y2qYCegi0vE="
 											},
 											"font": "Arial;13;0",
-											"left": 661,
-											"top": 915,
+											"left": 613,
+											"top": 892,
 											"width": 183.16796875,
 											"height": 13,
 											"text": "+listObserver: array<Observer>",
@@ -4566,10 +4549,10 @@
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 656,
-									"top": 865,
+									"left": 608,
+									"top": 857,
 									"width": 193.16796875,
-									"height": 68
+									"height": 53
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -4591,8 +4574,8 @@
 												"$ref": "AAAAAAF+eFGdLWtxxkU="
 											},
 											"font": "Arial;13;0",
-											"left": 661,
-											"top": 938,
+											"left": 613,
+											"top": 915,
 											"width": 183.16796875,
 											"height": 13,
 											"text": "+ajouterObservateur(a : Object)",
@@ -4608,8 +4591,8 @@
 												"$ref": "AAAAAAF+eFKaZm0tI2Y="
 											},
 											"font": "Arial;13;0",
-											"left": 661,
-											"top": 953,
+											"left": 613,
+											"top": 930,
 											"width": 183.16796875,
 											"height": 13,
 											"text": "+run()",
@@ -4626,8 +4609,8 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 501,
-											"top": 1337,
+											"left": 405,
+											"top": 1321,
 											"width": 183.16796875,
 											"height": 13,
 											"text": "+BoucleDeJeu(dieu : Dieu)",
@@ -4643,8 +4626,8 @@
 												"$ref": "AAAAAAF/y2szU+ihLXc="
 											},
 											"font": "Arial;13;0",
-											"left": 661,
-											"top": 968,
+											"left": 613,
+											"top": 945,
 											"width": 183.16796875,
 											"height": 13,
 											"text": "+notifier()",
@@ -4652,8 +4635,8 @@
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 656,
-									"top": 933,
+									"left": 608,
+									"top": 910,
 									"width": 193.16796875,
 									"height": 53
 								},
@@ -4668,8 +4651,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": -168,
-									"top": 368,
+									"left": -216,
+									"top": 360,
 									"width": 10,
 									"height": 10
 								},
@@ -4684,8 +4667,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": -168,
-									"top": 368,
+									"left": -216,
+									"top": 360,
 									"width": 10,
 									"height": 10
 								}
@@ -4695,8 +4678,8 @@
 							},
 							"font": "Arial;13;0",
 							"containerChangeable": true,
-							"left": 656,
-							"top": 840,
+							"left": 608,
+							"top": 832,
 							"width": 193.16796875,
 							"height": 146,
 							"nameCompartment": {
@@ -5729,7 +5712,7 @@
 										"$ref": "AAAAAAF9mXzxILT48k8="
 									},
 									"name": "surviveRule",
-									"type": "array<SimpleBooleanProperty>"
+									"type": "array<Boolean>"
 								},
 								{
 									"_type": "UMLAttribute",
@@ -5738,7 +5721,7 @@
 										"$ref": "AAAAAAF9mXzxILT48k8="
 									},
 									"name": "bornRule",
-									"type": "array<SimpleBooleanProperty>"
+									"type": "array<Boolean>"
 								}
 							],
 							"operations": [
@@ -5795,7 +5778,7 @@
 												"$ref": "AAAAAAF+eFYek3ieqQU="
 											},
 											"name": "bornRules ",
-											"type": "array<SimpleBooleanProperty>"
+											"type": "array<Boolean>"
 										},
 										{
 											"_type": "UMLParameter",
@@ -5804,7 +5787,7 @@
 												"$ref": "AAAAAAF+eFYek3ieqQU="
 											},
 											"name": "surviveRule ",
-											"type": "array<SimpleBooleanProperty>"
+											"type": "array<Boolean>"
 										}
 									]
 								},
@@ -6398,21 +6381,12 @@
 							"attributes": [
 								{
 									"_type": "UMLAttribute",
-									"_id": "AAAAAAF+eE9VWmiBFsk=",
-									"_parent": {
-										"$ref": "AAAAAAF+eE5pEGTPexU="
-									},
-									"name": "traite",
-									"type": "array<Object>"
-								},
-								{
-									"_type": "UMLAttribute",
 									"_id": "AAAAAAF+eFLulW33T2E=",
 									"_parent": {
 										"$ref": "AAAAAAF+eE5pEGTPexU="
 									},
 									"name": "time",
-									"type": "integerProperty"
+									"type": "int"
 								},
 								{
 									"_type": "UMLAttribute",
