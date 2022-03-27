@@ -37,7 +37,7 @@ public class Dieu{
     /**
      * permet de tuer toutes les cellules, donc de nettoyer la grille
      */
-    public static void clearGrid() {
+    public void clearGrid() {
         for(int x=0;x<monde.getTailleX();x++){
             for(int y=0;y<monde.getTailleY();y++){
                 monde.getGrille()[x][y].setAlive(false);

@@ -5,7 +5,13 @@
     <string name="config">configuration partie</string>
     <string name="survive">Survivre</string>
     <string name="born">Naître</string>
+    <string name="clear">clear</string>
     <string name="avancer">Click pour aller vers la prochaine étape ---></string>
-
+    <string name="contexte">    Notre projet consiste en un jeu de la vie de Conway.\n
+        Le principe est simple : il y a un tableau de cellule, qui peuvent prendre deux états, vivante ou morte.
+        \n Une cellule naît si elle a 3 cellules voisines vivantes, et ne peux rester en vie que si elle
+        \nne possède que 2 ou 3 voisines vivante\n En dessous, elle meurt d’isolement, et au-dessus, \n
+        elle meurt de surpopulation.
+    </string>
 
 </resources>

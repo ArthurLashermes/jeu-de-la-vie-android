@@ -3,6 +3,7 @@ package com.iut.jeudelavie.Views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Pair;
+import android.util.Xml;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -32,10 +33,12 @@ public class Principale extends AppCompatActivity implements Observer {
     private Button boutonLancement;
     private Button boutonConfig;
     private Button avancer;
+    private Button clear;
     private ImageFilterButton info;
     private GridLayout table;
     private BoucleDeJeu boucleDeJeu;
     private Thread thread;
+
     private CheckBox Tab[][]= new CheckBox[10][10];
 
 
@@ -68,6 +71,7 @@ public class Principale extends AppCompatActivity implements Observer {
         info=findViewById(R.id.info);
         table=findViewById(R.id.Table);
         avancer=findViewById(R.id.Avancer);
+        clear=findViewById(R.id.clear);
         Stub stub = new Stub();
         HashMap<String,Dieu> lesConfig = stub.Loader(getBaseContext());
 
@@ -99,26 +103,22 @@ public class Principale extends AppCompatActivity implements Observer {
             }
         }
         boutonLancement.setText("play");
-                /*
-        TabCells tabCells = new TabCells(this, dieu);
 
-         */
-
-        /*
-        AdaptateurRecycleView adp=new AdaptateurRecycleView(new Stub().LoadMonde(), new AdaptateurRecycleView.OnItemClick() {
-            @Override
-            public void onMondeClicked(Monde monde) {
-            }
-        });*/
 
         boucleDeJeu = new BoucleDeJeu(dieu);
         boucleDeJeu.addListener(this);
-        boucleDeJeu.setTime(200);
+        boucleDeJeu.setTime(1000);
         thread = new Thread(boucleDeJeu);
         thread.start();
 
 
-
+        clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dieu.clearGrid();
+                actualiser();
+            }
+        });
         avancer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -173,10 +173,7 @@ public class Principale extends AppCompatActivity implements Observer {
     }
 
     public void start(){update();}
-//        BoucleDeJeu boucleDeJeu = new BoucleDeJeu();
 
-    //il faut modifier actualiser, ça prend beaucoup de ressources et ça marche pas (une erreur que je comprend pas vraiment)
-    // il faut que l'on actualise seulement l'état du checkbox
 
     public void update() {
         runOnUiThread(new Runnable() {
